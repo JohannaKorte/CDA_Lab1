@@ -18,6 +18,10 @@ def cross_val(data, labels, k, classifier):
 
             if classifier == 'linear':
                 predicted = classifiers.lin_reg(train_set, test_set, train_label)
+            elif classifier == 'decision tree':
+                predicted = classifiers.decision_tree(train_set, test_set, train_label)
+            elif classifier == 'neuralnetwork':
+                predicted = classifiers.neuralnetwork(train_set, test_set, train_label)
 
             # Get TN,TP,FN,FP
             for i in range(len(predicted)):
