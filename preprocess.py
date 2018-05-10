@@ -3,7 +3,7 @@ import numpy as np
 
 
 def preprocess(file):
-    """ ... """
+    """ Takes an input .csv file and preprocesses the data to floats. See report for more information """
     data = []
     labels = []
 
@@ -112,7 +112,3 @@ def preprocess(file):
         data[i][9] = float(accountcode_list.index(data[i][9]))
 
     return data, labels
-
-
-
-
