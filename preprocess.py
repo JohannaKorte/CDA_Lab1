@@ -18,7 +18,6 @@ def preprocess(file):
                     labels.append(1)
                 if row[9] == 'Settled':
                     labels.append(0)
-                # TODO: Make all data points to floats
 
                 # Booking date
                 # bookingdate = row[1]              # Leave out for now
