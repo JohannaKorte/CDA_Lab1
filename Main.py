@@ -1,5 +1,4 @@
 import preprocess
-import classifiers
 import crossvalidation
 
 #  PARAMETERS
@@ -7,7 +6,7 @@ import crossvalidation
 
 file = '/Users/johannakorte/Desktop/CDA_Lab1/data_for_student_case.csv'     # Input file
 k = 10                                       # k-fold cross-validation parameter
-classifier = 'neuralnetwork'                 # Choose classifier ('linear', 'decision tree', 'neuralnetwork')
+classifier = 'SVM'                           # Choose classifier ('linear', 'decision tree', 'neuralnetwork', 'SVM')
 SMOTEd = True                                # Apply SMOTE? (True, False)
 
 #  MAIN

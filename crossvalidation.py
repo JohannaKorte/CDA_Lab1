@@ -3,10 +3,12 @@ import classifiers
 
 
 def cross_val(data, labels, k, classifier):
-    """ ... """
+    """ Performs k-fold cross validation using the specified classifier, returns number of true/false
+    positives/negatives """
     kf = KFold(n_splits=k)
     tp, fp, fn, tn = 0, 0, 0, 0
     for train_index, test_index in kf.split(data):
+            print 'hi'
             test_set, train_set, test_label, train_label = [], [], [], []
             # make train and test sets/labels
             for i in train_index:
@@ -22,6 +24,8 @@ def cross_val(data, labels, k, classifier):
                 predicted = classifiers.decision_tree(train_set, test_set, train_label)
             elif classifier == 'neuralnetwork':
                 predicted = classifiers.neuralnetwork(train_set, test_set, train_label)
+            elif classifier == 'SVM':
+                predicted = classifiers.SVM(train_set, test_set, train_label)
 
             # Get TN,TP,FN,FP
             for i in range(len(predicted)):
