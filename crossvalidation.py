@@ -1,8 +1,9 @@
 from sklearn.model_selection import KFold
 import classifiers
+import SMOTE
 
 
-def cross_val(data, labels, k, classifier):
+def cross_val(data, labels, k, smote, classifier):
     """ Performs k-fold cross validation using the specified classifier, returns number of true/false
     positives/negatives """
     kf = KFold(n_splits=k)
@@ -16,6 +17,10 @@ def cross_val(data, labels, k, classifier):
             for i in test_index:
                 test_set.append(data[i])
                 test_label.append(labels[i])
+
+            # Apply SMOTEing when smote parameter is True
+            if smote:
+                train_set, train_label = SMOTE.SMOTEd(train_set, train_label)
 
             if classifier == 'linear':
                 predicted = classifiers.lin_reg(train_set, test_set, train_label)

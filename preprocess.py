@@ -70,7 +70,7 @@ def preprocess(file):
                 accountcode_list.append(accountcode)
 
                 # Mail id
-                mail_id = row[14]   # Fine
+                mail_id = row[14]
                 mail_id = mail_id.replace('email', '')
                 if mail_id == 'NA':
                     mail_id = 0.0
