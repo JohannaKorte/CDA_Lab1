@@ -7,6 +7,7 @@
 import preprocess
 import crossvalidation
 import SMOTE
+import ROC
 
 __author__ = "Johanna Korte"
 __email__ = "j.p.korte@student.tudelft.nl"
@@ -16,7 +17,7 @@ __email__ = "j.p.korte@student.tudelft.nl"
 
 file = '/Users/johannakorte/Desktop/CDA_Lab1/data_for_student_case.csv'     # Input file
 k = 10                                       # k-fold cross-validation parameter
-classifier = 'linear'                        # Choose classifier ('linear', 'decision tree', 'neuralnetwork', 'SVM')
+classifier = 'neuralnetwork'                 # Choose classifier ('linear', 'decision tree', 'neuralnetwork', 'SVM')
 SMOTEd = True                                # Apply SMOTE? (True, False)
 
 #  MAIN
@@ -28,15 +29,9 @@ data, labels = preprocess.preprocess(file)
 
 # Apply SMOTE if applicable and use k-fold cross-validation with the specified classifier
 print "Applying %i-fold cross-validation, using %s classifier..." %(k, classifier)
-tp, fp, fn, tn = crossvalidation.cross_val(data, labels, k, SMOTEd, classifier)
+test_label, predicted = crossvalidation.cross_val(data, labels, k, SMOTEd, classifier)
 
-
-#  PRINT RESULTS
-# ______________________________________________________________________________________________________________________
+# ROC curve
+print "Make ROC curve..."
+ROC.ROC_curve(test_label, predicted)
 print "Done."
-print "________________________"
-print "Average TP, FP, FN, TN:"
-print "TP:   ", tp
-print "FP:   ", fp
-print "FN:   ", fn
-print "TN:   ", tn

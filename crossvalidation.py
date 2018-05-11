@@ -32,20 +32,20 @@ def cross_val(data, labels, k, smote, classifier):
                 predicted = classifiers.SVM(train_set, test_set, train_label)
 
             # Get TN,TP,FN,FP
-            for i in range(len(predicted)):
-                y_predicted = round(predicted[i])
-                y_label = round(test_label[i])
-                if y_predicted == 1 and y_label == 1:
-                    tp += 1
-                elif y_predicted == 1 and y_label == 0:
-                    fp += 1
-                elif y_predicted == 0 and y_label == 1:
-                    fn += 1
-                elif y_predicted == 0 and y_label == 0:
-                    tn += 1
-
-    tp /= k
-    fp /= k
-    fn /= k
-    tn /= k
-    return tp, fp, fn, tn
+    #         for i in range(len(predicted)):
+    #             y_predicted = round(predicted[i])
+    #             y_label = round(test_label[i])
+    #             if y_predicted == 1 and y_label == 1:
+    #                 tp += 1
+    #             elif y_predicted == 1 and y_label == 0:
+    #                 fp += 1
+    #             elif y_predicted == 0 and y_label == 1:
+    #                 fn += 1
+    #             elif y_predicted == 0 and y_label == 0:
+    #                 tn += 1
+    #
+    # tp /= k
+    # fp /= k
+    # fn /= k
+    # tn /= k
+    return test_label, predicted
