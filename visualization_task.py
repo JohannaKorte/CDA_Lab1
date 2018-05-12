@@ -1,32 +1,33 @@
 import pickle
-import pandas as pd
 import numpy as np
-import csv
 import matplotlib.pyplot as plt
+import preprocess
 
-f = open('dataframe.pckl', 'rb')
-data = pickle.load(f)
-f.close()
+file = '/Users/johannakorte/Desktop/CDA_Lab1/data_for_student_case.csv'
 
-x = 'simple_journal'
+data, labels = preprocess.preprocess(file)
 
-Xuniques, X = np.unique(data[x], return_inverse=True)
-print Xuniques
+settled_amounts = [x[3] for i, x in enumerate(data) if labels[i] == 0]
+chargeback_amounts = [x[3] for i, x in enumerate(data) if labels[i] == 1]
 
-# settled_amount_values = [x for i,x in enumerate(data['amount']) if data['simple_journal'][i] == 'Settled']
-# chargeback_amount_values = [x for i,x in enumerate(data['amount']) if data['simple_journal'][i] == 'Chargeback']
-# refused_amount_values = [x for i,x in enumerate(data['amount']) if data['simple_journal'][i] == 'Refused']
-#
-# settled_x = [X[i] for i,x in enumerate(data['amount']) if data['simple_journal'][i] == 'Settled']
-# chargeback_x = [X[i] for i,x in enumerate(data['amount']) if data['simple_journal'][i] == 'Chargeback']
-# refused_x = [X[i] for i,x in enumerate(data['amount']) if data['simple_journal'][i] == 'Refused']
+# Weigths to enable percentage y-axis
+settled_length = len(settled_amounts)
+chargeback_length = len(chargeback_amounts)
+weights_settled = np.ones_like(settled_amounts)/float(len(settled_amounts))
+weights_chargeback = np.ones_like(chargeback_amounts)/float(len(chargeback_amounts))
 
-fig = plt.figure()
-ax = fig.add_subplot(111)
-# ax.scatter(settled_x ,settled_amount_values, c='b', marker='s')
-# ax.scatter(chargeback_x,chargeback_amount_values, c='r', marker='s')
-# ax.scatter(refused_x,refused_amount_values,c='g',marker='s')
-ax.scatter(X,data['amount'])
-ax.set(xticks=range(len(Xuniques)), xticklabels=Xuniques)
-plt.legend(loc='upper left')
+
+plt.figure()
+f, (ax1, ax2) = plt.subplots(2,1,sharex=True, sharey=True, tight_layout=True)
+ax1.hist(settled_amounts, weights=weights_settled, bins=100, color='#00A6D6')
+ax2.hist(chargeback_amounts, weights=weights_chargeback, bins=100, color='#008891')
+ax1.set_title('Settled')
+ax2.set_title('Chargeback')
+ax2.set_xlabel('Amount')
+ax1.set_ylabel('Fraction of transactions')
+ax2.set_ylabel('Fraction of transactions')
+plt.axis([0, 8000, 0, 0.9])
 plt.show()
+
+
+
