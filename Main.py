@@ -34,7 +34,6 @@ data, labels = preprocess.preprocess(file)
 
 # Apply SMOTE if applicable and use k-fold cross-validation with the specified classifier
 print "Applying %i-fold cross-validation, using %s classifier(s)..." %(k, tuple(classifier))
-# test_label, predicted = crossvalidation.cross_val(data, labels, k, SMOTEd, classifier)
 cross_val_results = crossvalidation.cross_val_main(data, labels, k, SMOTEd, classifier)
 
 # Print ROC curve
