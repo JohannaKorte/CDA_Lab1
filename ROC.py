@@ -9,7 +9,7 @@ def ROC_curve(cross_val_results):
 
     plt.figure()
     plt.gca().set_color_cycle(['red', 'green', 'blue', 'yellow', 'cyan', 'magenta', 'black'])
-    plt.plot([0, 1], [0, 1], lw=2, linestyle='--')
+    plt.plot([0, 1], [0, 1], lw=2, linestyle='--', color='black')
 
     for key in keys:
         print '==================='
@@ -56,11 +56,13 @@ def ROC_curve(cross_val_results):
         print "\n\n"
 
         # Plot figure
-        plt.plot(fpr, tpr, lw=1, label='ROC %s (area = %0.2f)' % (key, roc_auc))
+        plt.plot(fpr, tpr, lw=1, label='%s (auc = %0.2f)' % (key, roc_auc))
 
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
-    plt.legend(loc="lower right")
+    plt.title('ROC')
+    plt.legend(loc="lower right", fontsize='x-small')
     plt.show()
+
