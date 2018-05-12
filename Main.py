@@ -20,10 +20,11 @@ file = '/Users/johannakorte/Desktop/CDA_Lab1/data_for_student_case.csv'
 k = 10
 
 # Choose classifier ('linear', 'decision tree', 'naive bayes', 'randomforest', 'logistic', 'knn')
-classifier = ['svm']
+classifier = ['linear', 'linear', 'decision tree', 'decision tree', 'naive bayes', 'naive bayes', 'randomforest',
+              'randomforest', 'logistic', 'logistic']
 
 # Apply SMOTE? (True, False) per classifier
-SMOTEd = [False]
+SMOTEd = [True, False, True, False, True, False, True, False, True, False]
 
 #  MAIN
 # ______________________________________________________________________________________________________________________

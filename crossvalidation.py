@@ -20,8 +20,6 @@ def cross_val(data, labels, k, smote, classifier):
     tp, fp, fn, tn = 0, 0, 0, 0
     i = 0
     for train_index, test_index in kf.split(data):
-            print i
-            i += 1
             test_set, train_set, test_label, train_label = [], [], [], []
             # make train and test sets/labels
             for i in train_index:
