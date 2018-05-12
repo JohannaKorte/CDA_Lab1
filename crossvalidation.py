@@ -3,6 +3,13 @@ import classifiers
 import SMOTE
 
 
+def cross_val_main(data,labels,k,smote,classifiers):
+    cross_val_results = {}
+    """ Enable the use of multiple classifiers next to each other"""
+    for c in classifiers:
+        cross_val_results[c] = cross_val(data, labels, k, smote, c)
+    return cross_val_results
+
 def cross_val(data, labels, k, smote, classifier):
     """ Performs k-fold cross validation using the specified classifier, returns number of true/false
     positives/negatives """
@@ -31,4 +38,4 @@ def cross_val(data, labels, k, smote, classifier):
             elif classifier == 'SVM':
                 predicted = classifiers.SVM(train_set, test_set, train_label)
 
-    return test_label, predicted
+    return [test_label, predicted]

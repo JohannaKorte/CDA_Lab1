@@ -58,7 +58,7 @@ def preprocess(file):
                 # CVC match?
                 # 0 = Unknown, 1=Match, 2=No Match, 3-6=Not checked
                 cvcresponsecode = row[11]
-                if cvcresponsecode >= 3:
+                if int(cvcresponsecode) >= 3:
                     cvcresponsecode = 3
                 cvcresponsecode = float(cvcresponsecode)
 
