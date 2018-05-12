@@ -18,7 +18,10 @@ def cross_val(data, labels, k, smote, classifier):
     positives/negatives """
     kf = KFold(n_splits=k)
     tp, fp, fn, tn = 0, 0, 0, 0
+    i = 0
     for train_index, test_index in kf.split(data):
+            print i
+            i += 1
             test_set, train_set, test_label, train_label = [], [], [], []
             # make train and test sets/labels
             for i in train_index:
@@ -40,12 +43,12 @@ def cross_val(data, labels, k, smote, classifier):
                 predicted = classifiers.decision_tree(train_set, test_set, train_label)
             elif classifier == 'neuralnetwork':
                 predicted = classifiers.neuralnetwork(train_set, test_set, train_label)
-            elif classifier == 'SVM':
-                predicted = classifiers.SVM(train_set, test_set, train_label)
             elif classifier == 'naive bayes':
                 predicted = classifiers.naive_bayes(train_set, test_set, train_label)
             elif classifier == 'randomforest':
                 predicted = classifiers.randomforest(train_set, test_set, train_label)
+            elif classifier == 'knn':
+                predicted = classifiers.knn(train_set, test_set, train_label)
             else:
                 print 'Wrong name supplied: %s' % classifier
 

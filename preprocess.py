@@ -87,9 +87,9 @@ def preprocess(file):
                 card_id = card_id.replace('card', '')
                 card_id = float(card_id)
 
-                instance = [issuercountry] + [txvariantcode] + [bin] + [amount] + [currencycode] + [shoppercountrycode] + \
-                           [shopperinteraction] + [cvcsupplied] + [cvcresponsecode] + [accountcode] + [mail_id] + \
-                           [ip_id] + [card_id]
+                instance = [issuercountry] + [txvariantcode] + [bin] + [amount] + [currencycode] + \
+                           [shoppercountrycode] + [shopperinteraction] + [cvcsupplied] + [cvcresponsecode] + \
+                           [accountcode] + [mail_id] + [ip_id] + [card_id]
 
                 data.append(instance)
 
