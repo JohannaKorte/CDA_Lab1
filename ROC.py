@@ -8,8 +8,9 @@ def ROC_curve(cross_val_results):
     keys = cross_val_results.keys()
 
     plt.figure()
-    plt.gca().set_color_cycle(['red', 'green', 'blue', 'yellow', 'cyan', 'magenta', 'black'])
-    plt.plot([0, 1], [0, 1], lw=2, linestyle='--', color='black')
+    plt.plot([0, 1], [0, 1], lw=2.5, linestyle='--', color='black')
+    plt.gca().set_color_cycle(['#00A6D6', '#008891', '#e64616', '#a5ca1a', 'blue', 'green', 'yellow', 'cyan',
+                               'magenta', 'black'])
 
     for key in keys:
         print '==================='
