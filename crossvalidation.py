@@ -3,12 +3,14 @@ import classifiers
 import SMOTE
 
 
-def cross_val_main(data,labels,k,smote,classifiers):
+def cross_val_main(data, labels, k, smote, classifier):
+    """ Main function to call cross_val over all specified classifiers"""
     cross_val_results = {}
-    """ Enable the use of multiple classifiers next to each other"""
-    for c in classifiers:
-        cross_val_results[c] = cross_val(data, labels, k, smote, c)
+    for i, c in enumerate(classifier):
+        smoted = smote[i]
+        cross_val_results[c+str(smoted)] = cross_val(data, labels, k, smoted, c)
     return cross_val_results
+
 
 def cross_val(data, labels, k, smote, classifier):
     """ Performs k-fold cross validation using the specified classifier, returns number of true/false
@@ -31,11 +33,17 @@ def cross_val(data, labels, k, smote, classifier):
 
             if classifier == 'linear':
                 predicted = classifiers.lin_reg(train_set, test_set, train_label)
+            elif classifier == 'logistic':
+                predicted = classifiers.log_reg(train_set, test_set, train_label)
             elif classifier == 'decision tree':
                 predicted = classifiers.decision_tree(train_set, test_set, train_label)
             elif classifier == 'neuralnetwork':
                 predicted = classifiers.neuralnetwork(train_set, test_set, train_label)
             elif classifier == 'SVM':
                 predicted = classifiers.SVM(train_set, test_set, train_label)
+            elif classifier == 'naive bayes':
+                predicted = classifiers.naive_bayes(train_set, test_set, train_label)
+            elif classifier == 'randomforest':
+                predicted = classifiers.randomforest(train_set, test_set, train_label)
 
     return [test_label, predicted]

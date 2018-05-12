@@ -19,11 +19,11 @@ file = '/Users/johannakorte/Desktop/CDA_Lab1/data_for_student_case.csv'
 # k-fold cross-validation parameter
 k = 10
 
-# Choose classifier ('linear', 'decision tree', 'neuralnetwork', 'SVM')
-classifier = ['linear', 'neuralnetwork', 'decision tree']
+# Choose classifier ('linear', 'decision tree', 'neuralnetwork', 'SVM', 'naive bayes')
+classifier = ['linear', 'linear']
 
 # Apply SMOTE? (True, False)
-SMOTEd = True
+SMOTEd = [True, False]
 
 #  MAIN
 # ______________________________________________________________________________________________________________________
