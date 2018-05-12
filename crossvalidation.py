@@ -8,6 +8,7 @@ def cross_val_main(data, labels, k, smote, classifier):
     cross_val_results = {}
     for i, c in enumerate(classifier):
         smoted = smote[i]
+        print "Training %s %s..." % (c, smoted)
         cross_val_results[c+str(smoted)] = cross_val(data, labels, k, smoted, c)
     return cross_val_results
 
@@ -45,5 +46,7 @@ def cross_val(data, labels, k, smote, classifier):
                 predicted = classifiers.naive_bayes(train_set, test_set, train_label)
             elif classifier == 'randomforest':
                 predicted = classifiers.randomforest(train_set, test_set, train_label)
+            else:
+                print 'Wrong name supplied: %s' % classifier
 
     return [test_label, predicted]

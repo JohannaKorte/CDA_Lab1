@@ -8,12 +8,13 @@ def ROC_curve(cross_val_results):
     keys = cross_val_results.keys()
 
     plt.figure()
-    plt.gca().set_color_cycle(['red', 'green', 'blue', 'yellow'])
+    plt.gca().set_color_cycle(['red', 'green', 'blue', 'yellow', 'cyan', 'magenta', 'black'])
     plt.plot([0, 1], [0, 1], lw=2, linestyle='--')
 
     for key in keys:
-        it = 0
+        print '==================='
         print key
+        print '==================='
         test_label = cross_val_results[key][0]
         y_pred = cross_val_results[key][1]
 
@@ -30,9 +31,6 @@ def ROC_curve(cross_val_results):
             if distance < delta:
                 optimal = i
                 delta = distance
-        print fpr[optimal]
-        print tpr[optimal]
-
         threshold = thresholds[optimal]
 
         # Print TP, FP, FN, TN
@@ -47,21 +45,18 @@ def ROC_curve(cross_val_results):
             elif y_pred[j] <= threshold and test_label[j] == 0:
                 tn += 1
 
-        print "_______________"
-        print "TP:      %i" % tp
-        print "FP:      %i" % fp
-        print "FN:      %i" % fn
-        print "TN:      %i" % tn
-        print "_______________"
-        print "FPR:     %.2f" % fpr[optimal]
-        print "TPR:     %.2f" % tpr[optimal]
-        print "Threshold: %f" % threshold
-        print "_______________"
+        print "TP:         %i" % tp
+        print "FP:         %i" % fp
+        print "FN:         %i" % fn
+        print "TN:         %i" % tn
+        print "___________________"
+        print "FPR:        %.2f" % fpr[optimal]
+        print "TPR:        %.2f" % tpr[optimal]
+        print "Threshold: %.3f" % threshold
+        print "\n\n"
 
         # Plot figure
-        plt.plot(fpr, tpr,
-                 lw=2, label='ROC %s (area = %0.2f)' % (key, roc_auc))
-        it += 1
+        plt.plot(fpr, tpr, lw=1, label='ROC %s (area = %0.2f)' % (key, roc_auc))
 
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])

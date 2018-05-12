@@ -1,4 +1,3 @@
-import numpy as np
 from sklearn import linear_model, tree, svm
 from sklearn.neural_network import MLPClassifier
 from sklearn.naive_bayes import GaussianNB
@@ -26,6 +25,7 @@ def decision_tree(train_set, test_set, train_label):
     clf = tree.DecisionTreeClassifier()
     clf.fit(train_set, train_label)
     y_pred = clf.predict(test_set)
+    tree.export_graphviz(clf, out_file='decision_tree.dot')
     return y_pred
 
 
