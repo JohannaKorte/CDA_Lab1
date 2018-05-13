@@ -3,7 +3,6 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn import svm
 
 
 def lin_reg(train_set, test_set, train_label):
@@ -33,7 +32,7 @@ def decision_tree(train_set, test_set, train_label):
 
 def neuralnetwork(train_set, test_set, train_label):
     """ Trains a neural network classifier on data"""
-    clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(10, 4), random_state = 1)
+    clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(1,), random_state = 1)
     clf.fit(train_set, train_label)
     y_pred = clf.predict(test_set)
     return y_pred

@@ -14,17 +14,18 @@ __email__ = "j.p.korte@student.tudelft.nl"
 #  PARAMETERS
 # ______________________________________________________________________________________________________________________
 # Input file
-file = '/Users/johannakorte/Desktop/CDA_Lab1/data_for_student_case.csv'
+file = #TODO: INPUT YOUR CORRECT DATA FILE PATH HERE
 
 # k-fold cross-validation parameter
 k = 10
 
-# Choose classifier ('linear', 'decision tree', 'naive bayes', 'randomforest', 'logistic', 'knn')
-classifier = ['linear', 'linear', 'decision tree', 'decision tree', 'naive bayes', 'naive bayes', 'randomforest',
-              'randomforest', 'logistic', 'logistic']
+# Choose classifier ('linear', 'decision tree', 'naive bayes', 'randomforest', 'logistic', 'knn', 'neuralnetwork')
+# classifier = ['linear', 'linear', 'decision tree', 'decision tree', 'naive bayes', 'naive bayes', 'randomforest',
+#               'randomforest', 'logistic', 'logistic']
+classifier = ['linear', 'linear']
 
 # Apply SMOTE? (True, False) per classifier
-SMOTEd = [True, False, True, False, True, False, True, False, True, False]
+SMOTEd = [False, True]
 
 #  MAIN
 # ______________________________________________________________________________________________________________________
